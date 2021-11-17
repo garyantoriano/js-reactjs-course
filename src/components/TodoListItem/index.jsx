@@ -11,9 +11,11 @@ class TodoListItem extends React.Component {
   render() {
     return (
       <li>
-        <input type="checkbox" defaultChecked={this.props.completed} />
+        <input type="checkbox" checked={this.props.completed} />
         { this.props.name }
-      </li>      
+        &nbsp;
+        <button>Start task</button>
+      </li>
     )
   }
 }
@@ -21,11 +23,11 @@ class TodoListItem extends React.Component {
 /*
 * function component
 */
-// const TodoListItem = (props) => {
+// const TodoListItem = ({ completed, name }) => {
 //   return (
 //     <li>
-//       <input type="checkbox" defaultChecked={props.item.completed} />
-//       { props.item.name }
+//       <input type="checkbox" defaultChecked={completed} />
+//       { name }
 //     </li>
 //   )
 // };

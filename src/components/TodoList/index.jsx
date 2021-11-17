@@ -1,4 +1,5 @@
 import React from 'react';
+import Timer from '../Timer';
 import TodoListItem from '../TodoListItem';
 
 /*
@@ -9,6 +10,7 @@ class TodoList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      filterApplied: false,
       list: [
       {
         id: 0,
@@ -31,18 +33,33 @@ class TodoList extends React.Component {
         completed: false
       }
     ]};
+    this.toggleListItem = this.toggleListItem.bind(this);
+  }
+
+  toggleListItem(event) {
+    this.setState({
+      filterApplied: event.currentTarget.checked
+    });
   }
 
   //render method
   render() {
+    const { filterApplied, list } = this.state;
     return (
-      <ul>
-        {this.state.list.map(item => {
-          return (
-            <TodoListItem completed={item.completed} name={item.name} />
-          )
-        })}
-      </ul>
+      <>
+        <Timer />
+        <span>
+          <input type="checkbox" id="showPending" onChange={this.toggleListItem} defaultChecked={filterApplied}/>
+          <label htmlFor="showPending">Hide Completed</label>
+        </span>
+        <ul>
+          {list.filter(item => (!filterApplied ? true : !item.completed)).map(item => {
+            return (
+              <TodoListItem completed={item.completed} name={item.name} />
+            )
+          })}
+        </ul>
+      </>
     );
   }
 
