@@ -25,7 +25,7 @@ class Timer extends Component {
   }
 
   shouldComponentUpdate() {
-    return false;
+    return true;
   }
 
   componentWillUnmount() {

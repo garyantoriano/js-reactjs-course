@@ -11,6 +11,7 @@ class TodoList extends React.Component {
     super(props);
     this.state = {
       filterApplied: false,
+      hideTimer: false,
       list: [
       {
         id: 0,
@@ -33,7 +34,15 @@ class TodoList extends React.Component {
         completed: false
       }
     ]};
+    
+    this.toggleTimer = this.toggleTimer.bind(this);
     this.toggleListItem = this.toggleListItem.bind(this);
+  }
+
+  toggleTimer(event) {
+    this.setState({
+      hideTimer: event.currentTarget.checked
+    });
   }
 
   toggleListItem(event) {
@@ -44,10 +53,17 @@ class TodoList extends React.Component {
 
   //render method
   render() {
-    const { filterApplied, list } = this.state;
+    const { filterApplied, hideTimer, list } = this.state;
     return (
       <>
-        <Timer />
+        <div>
+          <span>
+            <input type="checkbox" id="hideTimer" onChange={this.toggleTimer} defaultChecked={hideTimer}/>
+            <label htmlFor="hideTimer">Hide Timer</label>
+          </span>
+          { !hideTimer && <Timer /> }
+
+        </div>
         <span>
           <input type="checkbox" id="showPending" onChange={this.toggleListItem} defaultChecked={filterApplied}/>
           <label htmlFor="showPending">Hide Completed</label>
