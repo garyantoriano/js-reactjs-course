@@ -1,5 +1,6 @@
 import React from 'react';
-import Timer from '../Timer';
+// import Timer from '../Timer';
+import Timer from '../TimerFunction';
 import TodoListItem from '../TodoListItem';
 
 /*
@@ -11,29 +12,8 @@ class TodoList extends React.Component {
     super(props);
     this.state = {
       filterApplied: false,
-      hideTimer: false,
-      list: [
-      {
-        id: 0,
-        name: "Learn ReactJs",
-        completed: true
-      },
-      {
-        id: 1,
-        name: "Learn React hooks",
-        completed: false
-      },
-      {
-        id: 3,
-        name: "Learn Redux",
-        completed: false
-      },
-      {
-        id: 4,
-        name: "Learn testing",
-        completed: false
-      }
-    ]};
+      hideTimer: false
+    };
     
     this.toggleTimer = this.toggleTimer.bind(this);
     this.toggleListItem = this.toggleListItem.bind(this);
@@ -53,7 +33,8 @@ class TodoList extends React.Component {
 
   //render method
   render() {
-    const { filterApplied, hideTimer, list } = this.state;
+    const { filterApplied, hideTimer } = this.state;
+    const { list } = this.props;
     return (
       <>
         <div>

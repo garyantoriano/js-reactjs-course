@@ -1,0 +1,24 @@
+{
+  "list": [
+    {
+      "id": 0,
+      "name": "Learn ReactJs",
+      "completed": true
+    },
+    {
+      "id": 1,
+      "name": "Learn React hooks",
+      "completed": false
+    },
+    {
+      "id": 3,
+      "name": "Learn Redux",
+      "completed": false
+    },
+    {
+      "id": 4,
+      "name": "Learn testing",
+      "completed": false
+    }
+  ]
+}

@@ -2,7 +2,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   devServer: {
-    port: 3000
+    port: 3000,
+    open: true
   },
   resolve: {
     extensions: ['.js', '.jsx']

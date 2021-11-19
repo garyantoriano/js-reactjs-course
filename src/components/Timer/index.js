@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+// class based component
 class Timer extends Component {
 
   constructor(props) {
