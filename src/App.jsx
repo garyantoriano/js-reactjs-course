@@ -4,6 +4,7 @@
 
 import React from "react";
 import TodoListContainer from "./modules/TodoListContainer";
+import './styles.css';
 
 function App () {
   return (

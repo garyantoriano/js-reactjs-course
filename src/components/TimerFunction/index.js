@@ -1,14 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const TimerFunction = () => {
   const [time, setTime] = useState(new Date());
+  const intervalRef = useRef();
 
   // This effect will be executed just one time
   useEffect(() => {
     console.log('Adding interval');
-    setInterval(() => {
+    intervalRef.current = setInterval(() => {
       setTime(new Date());
     }, 1000);
+
+  //callback to execute after unmount component
+    return () => {
+      clearInterval(intervalRef.current);
+    }
+
   }, []);
 
   // We can create more than one effect

@@ -11,12 +11,12 @@
       "completed": false
     },
     {
-      "id": 3,
+      "id": 2,
       "name": "Learn Redux",
       "completed": false
     },
     {
-      "id": 4,
+      "id": 3,
       "name": "Learn testing",
       "completed": false
     }

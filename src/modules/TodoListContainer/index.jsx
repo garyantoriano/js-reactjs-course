@@ -5,8 +5,13 @@ class TodoListContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      list: []
-    }
+      list: [],
+      filterApplied: false,
+      hideTimer: false
+    };
+    this.toggleTimer = this.toggleTimer.bind(this);
+    this.toggleListItem = this.toggleListItem.bind(this);
+    this.performAddTask = this.performAddTask.bind(this);
   }
 
   componentDidMount() {
@@ -23,10 +28,43 @@ class TodoListContainer extends Component {
     });
   }
 
+  toggleTimer(event) {
+    this.setState({
+      hideTimer: event.currentTarget.checked
+    });
+  }
+
+  toggleListItem(event) {
+    this.setState({
+      filterApplied: event.currentTarget.checked
+    });
+  }
+
+  performAddTask(newTask) {
+    this.setState(state => {
+      const newTaskElement = {
+        ...newTask,
+        id: state.list.length,
+        completed: false
+      }
+      let newList = [...state.list];
+      newList.push(newTaskElement);
+      return {
+        list: newList
+      }
+    });
+  }
+
   render() {
-    const { list } = this.state;
+    const { list, filterApplied } = this.state;
     return (
-      <TodoList list={list} />
+      <TodoList
+        list={list}
+        filterApplied={filterApplied}
+        toggleTimer={this.toggleTimer}
+        toggleListItem={this.toggleListItem}
+        performAddTask={this.performAddTask}
+      />
     )
   }
 }
