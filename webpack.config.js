@@ -5,6 +5,11 @@ module.exports = {
     port: 3000,
     open: true
   },
+  ignoreWarnings: [
+    {
+      module: /node_modules/
+    }
+  ],
   resolve: {
     extensions: ['.js', '.jsx']
   },
